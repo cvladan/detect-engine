@@ -10,6 +10,7 @@ class DetectCMS
     public $systems = [
         "Drupal",
         "Wordpress",
+        "Prestashop",
         "Joomla",
         "Liferay",
         "vBulletin",
