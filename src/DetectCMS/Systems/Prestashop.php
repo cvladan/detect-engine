@@ -8,6 +8,7 @@ class Prestashop extends \DetectCMS\DetectCMS
     public $methods = array(
         "generator_header",
         "generator_meta",
+        "script_var"
     );
 
     public $home_html = "";
@@ -71,6 +72,18 @@ class Prestashop extends \DetectCMS\DetectCMS
 
         return FALSE;
 
+    }
+
+
+    public function script_var()
+    {
+        if ($this->home_html) {
+            if (\preg_match("/var prestashop = /", $this->home_html)) {
+                return true;
+            }
+        }
+
+        return FALSE;
     }
 
 
