@@ -27,10 +27,13 @@ class Concrete5 extends \DetectCMS\DetectCMS
             require_once __DIR__ . '/../Thirdparty/simple_html_dom.php';
 
             $html = str_get_html($this->home_html);
-
-            if ($generator = $html->find("meta[name='generator']", false)) {
-                return stripos($generator->content, 'concrete5') !== false;
+            if ($html) {
+                if ($generator = $html->find("meta[name='generator']", false)) {
+                    return stripos($generator->content, 'concrete5') !== false;
+                }
             }
+
+
         }
 
         return false;
