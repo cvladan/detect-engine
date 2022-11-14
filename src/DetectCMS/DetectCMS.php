@@ -11,7 +11,6 @@ class DetectCMS
         "Drupal",
         "Wordpress",
         "Prestashop",
-        "CsCart",
         "Joomla",
         "Liferay",
         "vBulletin",
@@ -29,7 +28,9 @@ class DetectCMS
         'Concrete5',
         'Squarespace',
         'Typo3',
-        'Wix'
+        'Wix',
+        "CsCart",
+        "OpenCart"
     ];
 
     private $common_methods = ["generator_header", "generator_meta"];
