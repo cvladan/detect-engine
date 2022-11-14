@@ -39,7 +39,7 @@ class Magento extends \DetectCMS\DetectCMS
                     }
                 }
                 return false;
-            } catch (\Exception $e) {
+            } catch (\Throwable $e) {
                 return false;
             }
 
