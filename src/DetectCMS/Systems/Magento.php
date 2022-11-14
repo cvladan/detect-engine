@@ -1,4 +1,5 @@
 <?php
+
 namespace DetectCMS\Systems;
 
 class Magento extends \DetectCMS\DetectCMS
@@ -23,22 +24,29 @@ class Magento extends \DetectCMS\DetectCMS
     public function mage_cookies_path()
     {
 
-        if(!empty($this->home_html)) {
+        if ($this->home_html) {
 
-            libxml_use_internal_errors(true); // stop html5 tags causing errors
+            try {
+                libxml_use_internal_errors(true); // stop html5 tags causing errors
 
-            $dom = new \DOMDocument();
-            $dom->loadHTML($this->home_html);
-            $scripts = $dom->getElementsByTagName('script');
-            foreach($scripts as $script) {
-                $value = $script->nodeValue;
-                if(strstr($value, 'Mage.Cookies.path')) {
-                    return true;
+                $dom = new \DOMDocument();
+                $dom->loadHTML($this->home_html);
+                $scripts = $dom->getElementsByTagName('script');
+                foreach ($scripts as $script) {
+                    $value = $script->nodeValue;
+                    if (strstr($value, 'Mage.Cookies.path')) {
+                        return true;
+                    }
                 }
+                return false;
+            } catch (\Exception $e) {
+                return false;
             }
-            return false;
+
 
         }
+
+        return false;
     }
 
 }
