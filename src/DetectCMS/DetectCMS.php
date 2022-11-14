@@ -33,7 +33,8 @@ class DetectCMS
         'Wix',
         "Odoo",
         "CsCart",
-        "OpenCart"
+        "OpenCart",
+        "Plesk"
     ];
 
     private $common_methods = ["generator_header", "generator_meta"];
