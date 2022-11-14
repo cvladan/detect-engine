@@ -31,10 +31,8 @@ class Prestashop extends \DetectCMS\DetectCMS
 
         if (is_array($this->home_headers)) {
 
-            foreach ($this->home_headers as $line) {
-
-                if (strpos($line, "set-cookie") !== FALSE) {
-                    dd($line);
+            foreach ($this->home_headers as $key => $line) {
+                if ($key == 'set-cookie') {
                     if (preg_match("/PrestaShop-/", $line)) {
                         return true;
                     }
