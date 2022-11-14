@@ -2,6 +2,8 @@
 
 namespace DetectCMS;
 
+use GuzzleHttp\Client;
+
 require_once __DIR__ . '/Thirdparty/simple_html_dom.php';
 
 class DetectCMS
@@ -47,7 +49,7 @@ class DetectCMS
     function __construct($url)
     {
         $this->url = $url;
-        list($this->home_headers, $this->home_html) = $this->fetchBodyAndHeaders();
+        list($this->home_headers, $this->home_html) = $this->fetchBodyAndHeadersWithLaravel();
         $this->result = $this->check($url);
     }
 
@@ -142,6 +144,26 @@ class DetectCMS
 
         return $return;
 
+    }
+
+    protected function fetchBodyAndHeadersWithLaravel()
+    {
+        $client = new Client();
+
+        $http = $client->request('GET', $this->url);
+
+        if ($http->getStatusCode() == '200') {
+            $header_array = $http->getHeaders();
+            foreach ($header_array as $key => $header) {
+                $header_array[$key] = $header[0];
+            }
+
+
+            $body = $http->getBody();
+            return [$header_array, $body];
+        }
+
+        return false;
     }
 
     protected function fetchBodyAndHeaders()
