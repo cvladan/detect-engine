@@ -28,7 +28,8 @@ class DetectCMS
         'Laravel',
         'Concrete5',
         'Squarespace',
-        'Typo3'
+        'Typo3',
+        'Wix'
     ];
 
     private $common_methods = ["generator_header", "generator_meta"];
