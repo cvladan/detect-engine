@@ -29,6 +29,7 @@ class DetectCMS
         'Squarespace',
         'Typo3',
         'Wix',
+        "Odoo",
         "CsCart",
         "OpenCart"
     ];
