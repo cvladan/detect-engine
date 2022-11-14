@@ -11,6 +11,7 @@ class DetectCMS
         "Drupal",
         "Wordpress",
         "Prestashop",
+        "CsCart",
         "Joomla",
         "Liferay",
         "vBulletin",
