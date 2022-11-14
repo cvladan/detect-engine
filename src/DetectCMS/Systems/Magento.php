@@ -23,7 +23,7 @@ class Magento extends \DetectCMS\DetectCMS
     public function mage_cookies_path()
     {
 
-        if($this->home_html) {
+        if(!empty($this->home_html)) {
 
             libxml_use_internal_errors(true); // stop html5 tags causing errors
 
