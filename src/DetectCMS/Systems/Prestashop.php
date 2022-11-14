@@ -33,9 +33,11 @@ class Prestashop extends \DetectCMS\DetectCMS
 
             foreach ($this->home_headers as $line) {
 
-                if (strpos($line, "X-Generator") !== FALSE) {
-
-                    return strpos($line, "PrestaShop") !== FALSE;
+                if (strpos($line, "set-cookie") !== FALSE) {
+                    dd($line);
+                    if (preg_match("/PrestaShop-/", $line)) {
+                        return true;
+                    }
 
                 }
 
@@ -78,7 +80,7 @@ class Prestashop extends \DetectCMS\DetectCMS
     public function script_var()
     {
         if ($this->home_html) {
-            if (\preg_match("/var prestashop = /", $this->home_html)) {
+            if (preg_match("/var prestashop = /", $this->home_html)) {
                 return true;
             }
         }
