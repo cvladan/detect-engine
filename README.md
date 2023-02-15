@@ -19,7 +19,7 @@ composer require krisseck/detect-cms:dev-master
         echo "CMS couldn't be detected";
     }
 
-## Test Phar file
+## Experiment with `example.phar` Phar file
 
 In the browser, enter URL:
 
